@@ -1,1 +1,0 @@
-{"Test Loss":11.95152256011963,"_runtime":182,"micro recall":0.62,"_timestamp":1.7730926697228894e+09,"Val AUC":0.8220272904483431,"Test Accuracy":62,"Train Loss":3.7006633816794916,"micro F1":0.62,"Train Accuracy":53.125,"_step":199,"_wandb":{"runtime":182},"Test Sensitivity":0.625,"micro precision":0.62,"Test Specificity":0.6153846153846154,"Test AUC":0.6858974358974359}
