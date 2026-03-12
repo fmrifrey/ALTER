@@ -1,0 +1,58 @@
+_wandb:
+    value:
+        cli_version: 0.25.0
+        e:
+            59izen2apj3l11ez2tb68vk2rj8bixm7:
+                args:
+                    - model=brainnetcnn
+                    - dataset=ABIDE
+                cpu_count: 32
+                cpu_count_logical: 64
+                cudaVersion: "13.0"
+                disk:
+                    /:
+                        total: "3827904856064"
+                        used: "484639363072"
+                email: djfrey@umich.edu
+                executable: /home/djfrey/miniconda3/envs/alter/bin/python
+                git:
+                    commit: ad5c5a95d54aa2a0a2a275c008a692d73af293f7
+                    remote: git@github.com:fmrifrey/ALTER.git
+                gpu: NVIDIA RTX A6000
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 10752
+                      memoryTotal: "51527024640"
+                      name: NVIDIA RTX A6000
+                      uuid: GPU-2edf8929-9f4a-01aa-c972-1af528a85cc0
+                host: phobos
+                memory:
+                    total: "806350245888"
+                os: Linux-6.8.0-101-generic-x86_64-with-glibc2.39
+                program: -m alter.__main__
+                python: CPython 3.9.25
+                root: /home/djfrey/code/coursework/ALTER
+                startedAt: "2026-03-10T13:50:44.067751Z"
+                writerId: 59izen2apj3l11ez2tb68vk2rj8bixm7
+        m: []
+        python_version: 3.9.25
+        t:
+            "1":
+                - 1
+                - 5
+                - 50
+                - 53
+            "2":
+                - 1
+                - 5
+                - 50
+                - 53
+            "3":
+                - 15
+            "4": 3.9.25
+            "5": 0.25.0
+            "10":
+                - 20
+            "12": 0.25.0
+            "13": linux-x86_64

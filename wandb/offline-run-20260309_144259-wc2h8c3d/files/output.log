@@ -1,0 +1,16 @@
+Error executing job with overrides: ['model=lrbgt', 'dataset=ABIDE']
+Traceback (most recent call last):
+  File "/home/djfrey/code/coursework/ALTER/alter/__main__.py", line 42, in main
+    model_training(cfg)
+  File "/home/djfrey/code/coursework/ALTER/alter/__main__.py", line 19, in model_training
+    dataloaders = dataset_factory(cfg)
+  File "/home/djfrey/code/coursework/ALTER/alter/dataset/__init__.py", line 15, in dataset_factory
+    dataloaders = init_stratified_dataloader(cfg, *datasets) \
+  File "/home/djfrey/code/coursework/ALTER/alter/dataset/dataloader.py", line 80, in init_stratified_dataloader
+    for test_index, valid_index in split2.split(final_timeseires_val_test, stratified):
+  File "/home/djfrey/code/coursework/ALTER/alter_env/lib/python3.9/site-packages/sklearn/model_selection/_split.py", line 1909, in split
+    for train, test in self._iter_indices(X, y, groups):
+  File "/home/djfrey/code/coursework/ALTER/alter_env/lib/python3.9/site-packages/sklearn/model_selection/_split.py", line 2318, in _iter_indices
+    raise ValueError(
+ValueError: The least populated class in y has only 1 member, which is too few. The minimum number of groups for any class cannot be less than 2.
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

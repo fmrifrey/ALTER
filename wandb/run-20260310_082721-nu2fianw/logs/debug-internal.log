@@ -1,0 +1,12 @@
+{"time":"2026-03-10T08:27:21.103625058-05:00","level":"INFO","msg":"stream: starting","core version":"0.25.0"}
+{"time":"2026-03-10T08:27:21.293827641-05:00","level":"INFO","msg":"stream: created new stream","id":"nu2fianw"}
+{"time":"2026-03-10T08:27:21.29400053-05:00","level":"INFO","msg":"handler: started","stream_id":"nu2fianw"}
+{"time":"2026-03-10T08:27:21.294150725-05:00","level":"INFO","msg":"stream: started","id":"nu2fianw"}
+{"time":"2026-03-10T08:27:21.294170154-05:00","level":"INFO","msg":"writer: started","stream_id":"nu2fianw"}
+{"time":"2026-03-10T08:27:21.294184055-05:00","level":"INFO","msg":"sender: started","stream_id":"nu2fianw"}
+{"time":"2026-03-10T08:33:10.290683243-05:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-03-10T08:33:11.042714102-05:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-03-10T08:33:11.045929782-05:00","level":"INFO","msg":"stream: closing","id":"nu2fianw"}
+{"time":"2026-03-10T08:33:11.045956312-05:00","level":"INFO","msg":"handler: closed","stream_id":"nu2fianw"}
+{"time":"2026-03-10T08:33:11.046106637-05:00","level":"INFO","msg":"sender: closed","stream_id":"nu2fianw"}
+{"time":"2026-03-10T08:33:11.046125686-05:00","level":"INFO","msg":"stream: closed","id":"nu2fianw"}

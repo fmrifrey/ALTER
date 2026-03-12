@@ -8,6 +8,8 @@ from .components import lr_scheduler_factory, optimizers_factory, logger_factory
 from .training import training_factory
 from datetime import datetime
 
+# import os
+# os.environ["WANDB_MODE"] = "offline"
 
 def model_training(cfg: DictConfig):
 
