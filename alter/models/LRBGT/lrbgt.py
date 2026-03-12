@@ -111,6 +111,7 @@ class BrainNetworkTransformer(BaseModel):
 
         self.attention_list = nn.ModuleList()
         forward_dim = config.dataset.node_sz
+        self.readout = getattr(config.model, "readout", "concat")
 
         self.pos_encoding = config.model.pos_encoding
         self.pos_embed_dim = config.model.pos_embed_dim
@@ -145,8 +146,16 @@ class BrainNetworkTransformer(BaseModel):
             nn.LeakyReLU()
         )
 
+        final_dim = 8 * sizes[-1] if self.readout == "concat" else 8
+        if self.readout == "sum":
+            self.norm = nn.BatchNorm1d(8)
+        elif self.readout not in ["concat", "mean", "max", "sum"]:
+            raise ValueError(
+                f"Unsupported readout '{self.readout}'. Use one of: concat, mean, max, sum"
+            )
+
         self.fc = nn.Sequential(
-            nn.Linear(8 * sizes[-1], 256),
+            nn.Linear(final_dim, 256),
             nn.LeakyReLU(),
             nn.Linear(256, 32),
             nn.LeakyReLU(),
@@ -175,7 +184,15 @@ class BrainNetworkTransformer(BaseModel):
 
         node_feature = self.dim_reduction(node_feature)
 
-        node_feature = node_feature.reshape((bz, -1))
+        if self.readout == "concat":
+            node_feature = node_feature.reshape((bz, -1))
+        elif self.readout == "mean":
+            node_feature = torch.mean(node_feature, dim=1)
+        elif self.readout == "max":
+            node_feature, _ = torch.max(node_feature, dim=1)
+        elif self.readout == "sum":
+            node_feature = torch.sum(node_feature, dim=1)
+            node_feature = self.norm(node_feature)
 
         return self.fc(node_feature)
 

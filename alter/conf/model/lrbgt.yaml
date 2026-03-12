@@ -2,7 +2,8 @@
 name: BrainNetworkTransformer
 sizes: [360, 100]  # Note: The input node size should not be included here
 pooling: [false, true]
-pos_encoding: rrwp  # identity, none
+readout: concat  # concat, mean, max, sum
+pos_encoding: none  # rrwp, identity, none
 orthogonal: true
 freeze_center: true
 project_assignment: true
