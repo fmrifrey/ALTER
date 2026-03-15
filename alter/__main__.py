@@ -1,6 +1,7 @@
 from datetime import datetime
 import wandb
 import hydra
+import numpy as np
 from omegaconf import DictConfig, open_dict
 from .dataset import dataset_factory
 from .models import model_factory
@@ -26,7 +27,7 @@ def model_training(cfg: DictConfig):
     training = training_factory(cfg, model, optimizers,
                                 lr_schedulers, dataloaders, logger)
 
-    training.train()
+    return training.train()
 
 
 @hydra.main(version_base=None, config_path="conf", config_name="config")
@@ -36,12 +37,24 @@ def main(cfg: DictConfig):
     # _{cfg.training.name}\
     # _{cfg.optimizer[0].lr_scheduler.mode}"
 
+    all_results = []
     for _ in range(cfg.repeat_time):
         run = wandb.init(project=cfg.project, reinit=True,
-                         group=f"{group_name}", tags=[f"{cfg.dataset.name}"])
-        model_training(cfg)
-
+                        group=f"{group_name}", tags=[f"{cfg.dataset.name}"])
+        result = model_training(cfg)   # collect the return value
+        all_results.append(result)
         run.finish()
+    # calculate mean and std directly
+    metrics = ['AUC', 'ACC', 'SEN', 'SPE']
+    values = np.array([[r[m] for m in metrics] for r in all_results])
+    means = values.mean(axis=0) * 100
+    stds = values.std(axis=0) * 100
+
+    print("\n" + "="*60)
+    print(f"Runs: {cfg.repeat_time}")
+    print("  ".join([f"{m}: {means[i]:.1f}({stds[i]:.1f})"
+                  for i, m in enumerate(metrics)]))
+    print("="*60)
 
 
 if __name__ == '__main__':
