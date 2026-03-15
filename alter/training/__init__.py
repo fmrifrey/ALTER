@@ -1,6 +1,6 @@
 from operator import mod
 from .training import Train
-# from .FBNettraining import FBNetTrain
+from .FBNettraining import FBNetTrain
 from omegaconf import DictConfig
 from typing import List
 import torch
