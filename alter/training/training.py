@@ -161,6 +161,7 @@ class Train:
                 f'Val AUC:{val_result[0]:.4f}',
                 f'Test AUC:{test_result[0]:.4f}',
                 f'Test Sen:{test_result[-1]:.4f}',
+                f'Test Spe:{test_result[-2]:.4f}',
                 f'LR:{self.lr_schedulers[0].lr:.4f}'
             ]))
 
@@ -197,3 +198,11 @@ class Train:
         if self.save_learnable_graph:
             self.generate_save_learnable_matrix()
         self.save_result(training_process)
+
+        last = training_process[-1]
+        return {
+            'AUC': last['Test AUC'],
+            'ACC': last['Test Accuracy'] / 100,
+            'SEN': last['Test Sensitivity'],
+            'SPE': last['Test Specificity'],
+        }
